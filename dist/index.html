@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./theme/style.css">
+    <link rel="stylesheet" href="./template/style.css">
     <link rel="stylesheet" href="./style/index.css">
-    <script src="./theme/index.js"></script>
+    <script src="./template/index.js"></script>
     <script src="./js/post/index.js"></script>
     <script src="./js/vue/index.js"></script>
 </head>
@@ -19,8 +19,8 @@
                     <transition>
                         <div v-show="show" class="console-content">
                             <div v-for="(item, index) in messages" :key="index">
-                                <template v-if="template[item.theme]">
-                                    <div v-bind="parseTheme(item)"></div>
+                                <template v-if="template[item.template]">
+                                    <div v-bind="parseTemplate(item)"></div>
                                 </template>
                                 <template v-else>
                                     <p>{{ item.msg }}</p>

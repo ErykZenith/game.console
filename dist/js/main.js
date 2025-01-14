@@ -17,9 +17,9 @@ const app = Vue.createApp({
                 this.$refs.input.focus()
             })
         },
-        parseTheme(item) {
-            if (this.template[item.theme]) {
-                return { innerHTML: this.template[item.theme](item) };
+        parseTemplate(item) {
+            if (this.template[item.template]) {
+                return { innerHTML: this.template[item.template](item) };
             }
             return { innerHTML: `<p>${item.msg}</p>` };
         },
@@ -79,10 +79,13 @@ const app = Vue.createApp({
                     this.messages = []
                     this.history = []
                 } else if (message) {
-                    this.history.unshift(message)
-                    this.history = this.history.slice(0, 10)
+                    if (!this.history.includes(message)) {
+                        this.history.unshift(message);
+                        this.history = this.history.slice(0, 10);
+                    }
                     await post('exec', message)
                 }
+                this.historyIndex = -1
                 target.value = ''
                 return
             }
@@ -95,11 +98,11 @@ const app = Vue.createApp({
         }
     },
     mounted() {
-        if (typeof template !== 'undefined') this.template = template;
+        if (typeof TEMPLATE !== 'undefined') this.template = TEMPLATE;
         const iframe = document.createElement("iframe");
         iframe.style.zIndex = "99999999999";
         window.addEventListener("message", this.onListener);
-        this.addMessage({ theme: "info", msg: "HI Player" });
+        this.addMessage({ template: "info", msg: "HI Player" });
     },
     unmounted() {
         window.removeEventListener("message", this.onListener);

@@ -20,7 +20,7 @@ end)
 RegisterCommand("add", function(_, args)
     if #args >= 2 then
         sendMessage({
-            theme = args[1],
+            template = args[1],
             msg = args[2]
         })
     end
