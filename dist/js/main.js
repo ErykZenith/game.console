@@ -7,7 +7,7 @@ const app = Vue.createApp({
             messages: [],
             history: [],
             historyIndex: null,
-            template: [],
+            templates: [],
             hideTimeout: null
         };
     },
@@ -18,8 +18,8 @@ const app = Vue.createApp({
             })
         },
         parseTemplate(item) {
-            if (this.template[item.template]) {
-                return { innerHTML: this.template[item.template](item) };
+            if (this.templates[item.template]) {
+                return { innerHTML: this.templates[item.template](item) };
             }
             return { innerHTML: `<p>${item.msg}</p>` };
         },
@@ -98,7 +98,7 @@ const app = Vue.createApp({
         }
     },
     mounted() {
-        if (typeof TEMPLATE !== 'undefined') this.template = TEMPLATE;
+        if (typeof TEMPLATES !== 'undefined') this.templates = TEMPLATES;
         const iframe = document.createElement("iframe");
         iframe.style.zIndex = "99999999999";
         window.addEventListener("message", this.onListener);
