@@ -1,0 +1,11 @@
+.error {
+    background: #ee3b3b63;
+    padding: .3rem;
+    margin: .3rem 0;
+}
+
+.info {
+    background: #3b9dee63;
+    padding: .3rem;
+    margin: .3rem 0;
+}

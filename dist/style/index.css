@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "Kanit";
+  src: url(../font/Kanit-Regular.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5vh;
+  color: #e2e2e2;
+  user-select: none;
+  font-family: "Kanit";
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container .window {
+  position: absolute;
+  width: 40rem;
+  margin: .3rem;
+  left: 0;
+  top: 0;
+}
+
+.container .window .console-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-x: auto;
+  height: 22rem;
+  transition: .3s;
+}
+
+.container .window .console-wrapper::-webkit-scrollbar {
+  width: .3rem;
+}
+
+.container .window .console-wrapper::-webkit-scrollbar-thumb {
+  background: #ffffffbe;
+}
+
+.container .window .console-wrapper .console-content {
+  word-break: break-all;
+}
+
+.container .window .input {
+  display: flex;
+  flex-direction: column;
+}
+
+.container .window .input input {
+  outline: none;
+  padding: .3rem;
+  border-radius: .2rem;
+  background: #2d2d2d98;
+  color: #bebebe;
+  border: #616060 .1rem solid;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity .3s;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}

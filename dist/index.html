@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./theme/style.css">
+    <link rel="stylesheet" href="./style/index.css">
+    <script src="./theme/index.js"></script>
+    <script src="./js/post/index.js"></script>
+    <script src="./js/vue/index.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="window">
+                <div :style="`opacity: ${isHidden?0:1}`" :class="`console-wrapper ${!isFocus&&'hide-scrollbar'}`">
+                    <transition>
+                        <div v-show="show" class="console-content">
+                            <div v-for="(item, index) in messages" :key="index">
+                                <template v-if="template[item.theme]">
+                                    <div v-bind="parseTheme(item)"></div>
+                                </template>
+                                <template v-else>
+                                    <p>{{ item.msg }}</p>
+                                </template>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+                <div class="input" :style="`opacity: ${isFocus?1:0}`">
+                    <input ref="input" type="text" @blur="refocus" @keydown="handleInput">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
