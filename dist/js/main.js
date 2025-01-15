@@ -1,3 +1,6 @@
+import post from "./post/index.js"
+import TEMPLATES from "../templates/index.js"
+
 const app = Vue.createApp({
     data() {
         return {

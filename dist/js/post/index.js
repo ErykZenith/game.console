@@ -1,4 +1,4 @@
-var post = async (
+export const post = async (
     eventName,
     data,
 ) => {
@@ -19,3 +19,4 @@ var post = async (
 
     return respFormatted;
 }
+export default post
