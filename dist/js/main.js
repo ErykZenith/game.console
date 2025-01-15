@@ -82,7 +82,7 @@ const app = Vue.createApp({
                     this.messages = []
                     this.history = []
                 } else if (message) {
-                    if (!this.history.includes(message)) {
+                    if (this.history.reverse()[0] !== message) {
                         this.history.unshift(message);
                         this.history = this.history.slice(0, 10);
                     }
