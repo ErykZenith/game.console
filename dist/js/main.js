@@ -78,10 +78,11 @@ const app = Vue.createApp({
         async handleInput({ key, target }) {
             const message = target.value.trim()
             if (key === 'Enter') {
-                if (message === '!clear') {
-                    this.messages = []
-                    this.history = []
-                } else if (message) {
+                if (message) {
+                    if (message === '/clear') {
+                        this.messages = []
+                        this.history = []
+                    }
                     if (this.history.reverse()[0] !== message) {
                         this.history.unshift(message);
                         this.history = this.history.slice(0, 10);
